@@ -32,6 +32,8 @@ public class  MainApplication {
                     System.out.println("Колличество каллорий: " + calories);
                 }
                 continue;
+            case "-sort": foodList.sort((o1,o2)->o1.getName().length() - o2.getName().length());
+            continue;
         	}
             String[] parts = arg.split("/");
             switch (parts[0]) {
