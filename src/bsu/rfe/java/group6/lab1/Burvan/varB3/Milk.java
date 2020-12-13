@@ -1,6 +1,6 @@
 package bsu.rfe.java.group6.lab1.Burvan.varB3;
 
-public class Milk extends Food   {
+public class Milk extends Food implements Nutritious {
 
     private String fat;
 
@@ -10,7 +10,7 @@ public class Milk extends Food   {
     }
     @Override
     public void consume() {
-        System.out.println(this + " выпито ");
+        System.out.println(this + " выпито "+ " каллорий " + calculateCalories());
     }
 
     public String getFlavour() {
@@ -27,6 +27,20 @@ public class Milk extends Food   {
 
     public String toString() {
         return super.toString() + " жирность " + fat.toUpperCase();
+    }
+    public int calculateCalories() {
+        if (this.fat == null) {
+            return 0;
+        }
+        switch (this.fat.toLowerCase()) {
+            case "1.5%":
+                return 44;
+            case "2.5%":
+                return 52;
+            case "5%":
+                return 64;
+            default: return 0;
+        }
     }
 }
 

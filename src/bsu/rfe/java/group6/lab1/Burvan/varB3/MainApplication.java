@@ -22,6 +22,17 @@ public class  MainApplication {
         List<Food> foodList = new ArrayList<>(20);
 
         for (String arg : args) {
+        	switch (arg) {
+            case "-calories":
+                if (foodList.isEmpty()) {
+                    System.out.println("Нет продуктов в корзине(Каллорийность 0)");
+                } else {
+                    int calories = foodList.stream().map(Nutritious::calculateCalories).
+                            mapToInt(Integer::intValue).sum();
+                    System.out.println("Колличество каллорий: " + calories);
+                }
+                continue;
+        	}
             String[] parts = arg.split("/");
             switch (parts[0]) {
             case "Cheese":

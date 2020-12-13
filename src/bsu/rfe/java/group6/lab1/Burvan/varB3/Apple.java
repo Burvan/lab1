@@ -1,6 +1,6 @@
 package bsu.rfe.java.group6.lab1.Burvan.varB3;
 
-public class Apple extends Food {
+public class Apple extends Food implements Nutritious {
 
     private String size;
 
@@ -11,7 +11,7 @@ public class Apple extends Food {
     }
 
     public void consume() {
-        System.out.println(this + " съедено");
+        System.out.println(this + " съедено"+" каллорий "+calculateCalories());
     }
 
     public String getSize() {
@@ -33,4 +33,17 @@ public class Apple extends Food {
     public String toString() {
         return super.toString() + " размера " + size.toUpperCase();
     }
+
+    public int calculateCalories() {
+        if(this.size==null){
+            return 0;
+        }
+        switch (this.size.toLowerCase()){
+            case "малый": return 10;
+            case "средний": return 20;
+            case "большой": return 30;
+            default: return 0;
+        }
+    }
+
 }
